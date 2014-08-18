@@ -10,7 +10,7 @@ using System.Collections.Specialized;
 using System.Configuration;
 using System.Xml;
 
-namespace MercyHillNewsletterParser.Forms
+namespace MercyHillNewsletter.UserInterface
 {
     public partial class ConfigurationForm : Form
     {

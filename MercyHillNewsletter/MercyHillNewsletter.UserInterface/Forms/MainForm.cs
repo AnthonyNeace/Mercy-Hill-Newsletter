@@ -6,11 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using MercyHillNewsletterParser.Forms;
+using MercyHillNewsletter.UserInterface;
 using System.Collections.Specialized;
 using System.Configuration;
 
-namespace MercyHillNewsletterParser
+namespace MercyHillNewsletter.UserInterface
 {
     public partial class MainForm : Form
     {

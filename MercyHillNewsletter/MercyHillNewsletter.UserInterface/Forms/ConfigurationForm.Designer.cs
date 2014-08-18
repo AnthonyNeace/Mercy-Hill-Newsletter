@@ -1,4 +1,4 @@
-﻿namespace MercyHillNewsletterParser.Forms
+﻿namespace MercyHillNewsletter.UserInterface
 {
     partial class ConfigurationForm
     {

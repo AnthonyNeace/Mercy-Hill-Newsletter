@@ -10,12 +10,14 @@ using MercyHillNewsletter.UserInterface;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
+using MercyHillNewsletter.Logging.Logger;
 
 namespace MercyHillNewsletter.UserInterface
 {
     public partial class MainForm : Form
     {
         private NameValueCollection AppSettings { get; set; }
+        private TextBoxLogger _logger { get; set; }
 
         public MainForm()
         {
@@ -66,7 +68,7 @@ namespace MercyHillNewsletter.UserInterface
             foreach (HtmlElement element in elements)
             {
                 string nameAttribute = element.GetAttribute("className");
-                //if (!string.IsNullOrEmpty(nameAttribute) && nameAttribute == "mcnDividerBlockInner")
+
                 if (!string.IsNullOrEmpty(nameAttribute) && nameAttribute == "mcnCaptionBlock")
                 {
                     writeToLog(string.Format(@"Analyzing the {0} iterate of element {1}", counter, nameAttribute));
@@ -80,15 +82,9 @@ namespace MercyHillNewsletter.UserInterface
                     Bitmap bitmap = new Bitmap(webBrowser.Width, webBrowser.Height);
                     webBrowser.DrawToBitmap(bitmap, new Rectangle(0, 0, webBrowser.Width, webBrowser.Height));
 
-
-
+                    // Save screenshot to dir
                     bitmap.Save(string.Format(@"C:\temp\imagetest-{0}-{1}.bmp", DateTime.Now.ToString("yyyyMMdd-mmHH"), counter));
                     counter++;
-
-                    // Save screenshot to dir
-
-                    // Continue
-                    //break;
                 }
             }
 
@@ -112,6 +108,8 @@ namespace MercyHillNewsletter.UserInterface
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            _logger = new TextBoxLogger(txtLog);
+
             writeToLog(@"Mercy Hill Newsletter Parser
 Anthony Neace
 2014
@@ -121,19 +119,21 @@ Anthony Neace
 
         public void writeToLog(string log)
         {
-            using (StringReader reader = new StringReader(log))
-            {
-                string line = string.Empty;
-                do
-                {
-                    line = reader.ReadLine();
-                    if (line != null)
-                    {
-                        txtLog.Text += string.Format("{0}{1}{2}", DateTime.UtcNow.ToString("yyyyMMdd-HHmm: "), line, Environment.NewLine);
-                    }
+            _logger.WriteMessage(log);
 
-                } while (line != null);
-            }
+            //using (StringReader reader = new StringReader(log))
+            //{
+            //    string line = string.Empty;
+            //    do
+            //    {
+            //        line = reader.ReadLine();
+            //        if (line != null)
+            //        {
+            //            txtLog.Text += string.Format("{0}{1}{2}", DateTime.UtcNow.ToString("yyyyMMdd-HHmm: "), line, Environment.NewLine);
+            //        }
+
+            //    } while (line != null);
+            //}
         }
     }
 }

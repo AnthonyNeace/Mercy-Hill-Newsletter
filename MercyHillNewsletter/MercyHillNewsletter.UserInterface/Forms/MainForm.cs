@@ -111,29 +111,12 @@ namespace MercyHillNewsletter.UserInterface
             _logger = new TextBoxLogger(txtLog);
 
             writeToLog(@"Mercy Hill Newsletter Parser
-Anthony Neace
-2014
-
-");
+Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-Newsletter");
         }
 
         public void writeToLog(string log)
         {
             _logger.WriteMessage(log);
-
-            //using (StringReader reader = new StringReader(log))
-            //{
-            //    string line = string.Empty;
-            //    do
-            //    {
-            //        line = reader.ReadLine();
-            //        if (line != null)
-            //        {
-            //            txtLog.Text += string.Format("{0}{1}{2}", DateTime.UtcNow.ToString("yyyyMMdd-HHmm: "), line, Environment.NewLine);
-            //        }
-
-            //    } while (line != null);
-            //}
         }
     }
 }

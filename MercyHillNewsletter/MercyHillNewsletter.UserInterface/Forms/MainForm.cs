@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MercyHillNewsletter.UserInterface;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.IO;
 
 namespace MercyHillNewsletter.UserInterface
 {
@@ -51,9 +52,8 @@ namespace MercyHillNewsletter.UserInterface
             webBrowser.ScrollBarsEnabled = false;
             webBrowser.Document.Body.Style = "overflow:hidden";
             webBrowser.Document.GetElementById("awesomebar").Style = "display:none";
-            //MessageBox.Show("Loaded!");
 
-            statusLabel.Text = "Loading webpage...";
+            writeToLog(string.Format("Loading web content at {0}", webBrowser.Url));
 
             // TODO: Move this to another thread.
 
@@ -61,14 +61,16 @@ namespace MercyHillNewsletter.UserInterface
 
             int counter = 0;
 
+            writeToLog(@"Iterating HTML elements...");
+
             foreach (HtmlElement element in elements)
             {
-                statusLabel.Text = "Analyzing web content...";
-
                 string nameAttribute = element.GetAttribute("className");
                 //if (!string.IsNullOrEmpty(nameAttribute) && nameAttribute == "mcnDividerBlockInner")
                 if (!string.IsNullOrEmpty(nameAttribute) && nameAttribute == "mcnCaptionBlock")
                 {
+                    writeToLog(string.Format(@"Analyzing the {0} iterate of element {1}", counter, nameAttribute));
+
                     webBrowser.Size = new Size(element.ClientRectangle.Width, element.ClientRectangle.Height);
 
                     // Scroll into view
@@ -90,7 +92,8 @@ namespace MercyHillNewsletter.UserInterface
                 }
             }
 
-            statusLabel.Text = "Operation complete.";
+            writeToLog(@"HTML analysis complete.");
+            txtLog.Refresh();
 
             // TODO: Use gmail API to email images to whoever needs them.
         }
@@ -105,6 +108,32 @@ namespace MercyHillNewsletter.UserInterface
         private void refreshAppSettings()
         {
             AppSettings = ConfigurationManager.AppSettings;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            writeToLog(@"Mercy Hill Newsletter Parser
+Anthony Neace
+2014
+
+");
+        }
+
+        public void writeToLog(string log)
+        {
+            using (StringReader reader = new StringReader(log))
+            {
+                string line = string.Empty;
+                do
+                {
+                    line = reader.ReadLine();
+                    if (line != null)
+                    {
+                        txtLog.Text += string.Format("{0}{1}{2}", DateTime.UtcNow.ToString("yyyyMMdd-HHmm: "), line, Environment.NewLine);
+                    }
+
+                } while (line != null);
+            }
         }
     }
 }

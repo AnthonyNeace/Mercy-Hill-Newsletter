@@ -128,11 +128,15 @@
             // 
             // txtLog
             // 
-            this.txtLog.Location = new System.Drawing.Point(13, 28);
+            this.txtLog.BackColor = System.Drawing.SystemColors.Info;
+            this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtLog.Enabled = false;
+            this.txtLog.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.txtLog.Location = new System.Drawing.Point(0, 24);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtLog.Size = new System.Drawing.Size(759, 300);
+            this.txtLog.Size = new System.Drawing.Size(784, 316);
             this.txtLog.TabIndex = 5;
             // 
             // MainForm

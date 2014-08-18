@@ -70,6 +70,10 @@
       <Project>{6CB6B077-9BEB-4031-BAC0-64B169FC244A}</Project>
       <Name>MercyHillNewsletter.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MercyHillNewsletter.Parsing\MercyHillNewsletter.Parsing.csproj">
+      <Project>{E62588E3-9E84-4AA5-AF69-255F7AB614C7}</Project>
+      <Name>MercyHillNewsletter.Parsing</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -35,7 +35,6 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageHandlingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.TextBox();
@@ -100,16 +99,6 @@
             this.createSlideshowToolStripMenuItem.Text = "Create slideshow";
             this.createSlideshowToolStripMenuItem.Click += new System.EventHandler(this.createSlideshowToolStripMenuItem_Click);
             // 
-            // webBrowser
-            // 
-            this.webBrowser.Location = new System.Drawing.Point(400, 400);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(800, 600);
-            this.webBrowser.TabIndex = 4;
-            this.webBrowser.Visible = false;
-            this.webBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -145,7 +134,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 362);
             this.Controls.Add(this.txtLog);
-            this.Controls.Add(this.webBrowser);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -170,7 +158,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem imageHandlingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createSlideshowToolStripMenuItem;
-        private System.Windows.Forms.WebBrowser webBrowser;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.TextBox txtLog;

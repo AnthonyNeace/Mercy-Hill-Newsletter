@@ -64,15 +64,30 @@ namespace MercyHillNewsletter.Parsing
                     // Scroll into view
                     element.ScrollIntoView(true);
 
-                    // Take screenshot
-                    Bitmap bitmap = new Bitmap(wb.Width, wb.Height);
-                    wb.DrawToBitmap(bitmap, new Rectangle(0, 0, wb.Width, wb.Height));
+                    takeScreenshot(counter);
 
-                    // Save screenshot to dir
-                    bitmap.Save(string.Format(@"C:\temp\imagetest-{0}-{1}.bmp", DateTime.Now.ToString("yyyyMMdd-mmHH"), counter));
                     counter++;
                 }
             }
+        }
+
+        private void takeScreenshot(int counter)
+        {
+            // Take screenshot
+            Bitmap bitmap = new Bitmap(wb.Width, wb.Height);
+            wb.DrawToBitmap(bitmap, new Rectangle(0, 0, wb.Width, wb.Height));
+
+            // Save screenshot to dir
+            string fileName = getDefaultFileName(counter);
+
+            bitmap.Save(fileName);
+
+            writeToLog(string.Format(@"Screenshot saved at {0}", fileName));
+        }
+
+        private string getDefaultFileName(int counter)
+        {
+            return string.Format(@"C:\temp\newsletter-{0}-{1}.bmp", DateTime.Now.ToString("yyyyMMdd-mmHH"), counter);
         }
 
         private void writeToLog(string log)

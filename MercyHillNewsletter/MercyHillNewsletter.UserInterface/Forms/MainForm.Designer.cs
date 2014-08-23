@@ -35,13 +35,13 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageHandlingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.getNewestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toPowerPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.getNewestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -106,6 +106,18 @@
             this.createSlideshowToolStripMenuItem.Text = "Slice Elements";
             this.createSlideshowToolStripMenuItem.Click += new System.EventHandler(this.sliceElementsToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // getNewestToolStripMenuItem
+            // 
+            this.getNewestToolStripMenuItem.Name = "getNewestToolStripMenuItem";
+            this.getNewestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getNewestToolStripMenuItem.Text = "View Newest";
+            this.getNewestToolStripMenuItem.Click += new System.EventHandler(this.getNewestToolStripMenuItem_Click);
+            // 
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -149,18 +161,6 @@
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLog.Size = new System.Drawing.Size(784, 316);
             this.txtLog.TabIndex = 5;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // getNewestToolStripMenuItem
-            // 
-            this.getNewestToolStripMenuItem.Name = "getNewestToolStripMenuItem";
-            this.getNewestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.getNewestToolStripMenuItem.Text = "Get Newest";
-            this.getNewestToolStripMenuItem.Click += new System.EventHandler(this.getNewestToolStripMenuItem_Click);
             // 
             // MainForm
             // 

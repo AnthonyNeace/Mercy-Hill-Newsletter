@@ -114,7 +114,16 @@ namespace MercyHillNewsletter.UserInterface
             writeToLog(newsletter.Title);
             writeToLog(newsletter.Url);
             writeToLog(newsletter.PublishDate.ToString());
-            writeToLog(newsletter.Text);
+            //writeToLog(newsletter.Text);
+
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            config.AppSettings.Settings["NewsletterUrl"].Value = newsletter.Url;
+
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            writeToLog("Active NewsletterUrl reset to newest newsletter url.");
         }
 
         #endregion
@@ -125,6 +134,8 @@ namespace MercyHillNewsletter.UserInterface
         {
             writeToLog(@"Mercy Hill Newsletter Parser
 Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-Newsletter");
+
+
         }
 
         #endregion

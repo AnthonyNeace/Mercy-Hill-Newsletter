@@ -38,6 +38,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toPowerPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +49,8 @@
             this.menuStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.imageHandlingToolStripMenuItem});
+            this.imageHandlingToolStripMenuItem,
+            this.exportToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 24);
@@ -128,6 +131,21 @@
             this.txtLog.Size = new System.Drawing.Size(784, 316);
             this.txtLog.TabIndex = 5;
             // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toPowerPointToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // toPowerPointToolStripMenuItem
+            // 
+            this.toPowerPointToolStripMenuItem.Name = "toPowerPointToolStripMenuItem";
+            this.toPowerPointToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toPowerPointToolStripMenuItem.Text = "To PowerPoint";
+            this.toPowerPointToolStripMenuItem.Click += new System.EventHandler(this.toPowerPointToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -161,6 +179,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.TextBox txtLog;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toPowerPointToolStripMenuItem;
 
     }
 }

@@ -8,8 +8,8 @@
     <ProjectGuid>{3397851C-43F9-4D30-8521-6A630A82D5C8}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MercyHillNewsletterParser</RootNamespace>
-    <AssemblyName>MercyHillNewsletterUtility</AssemblyName>
+    <RootNamespace>MercyHillNewsletter</RootNamespace>
+    <AssemblyName>MercyHillNewsletter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -57,6 +57,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

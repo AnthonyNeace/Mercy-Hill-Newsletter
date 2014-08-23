@@ -13,6 +13,7 @@ using System.IO;
 using MercyHillNewsletter.Logging.Logger;
 using MercyHillNewsletter.Parsing;
 using System.Threading;
+using MercyHillNewsletter.Slideshow;
 
 namespace MercyHillNewsletter.UserInterface
 {
@@ -115,5 +116,23 @@ Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-N
         }
 
         #endregion
+
+        private void toPowerPointToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog filePicker = new OpenFileDialog();
+
+            filePicker.Multiselect = true;
+
+            DialogResult result = filePicker.ShowDialog();
+
+            if (result == DialogResult.OK) // Test result.
+            {
+                List<string> images = filePicker.FileNames.ToList();
+                //                List<string> test = new List<string>(
+                PowerpointExporter test = new PowerpointExporter();
+
+                test.ExportToPowerpoint(images);
+            }
+        }
     }
 }

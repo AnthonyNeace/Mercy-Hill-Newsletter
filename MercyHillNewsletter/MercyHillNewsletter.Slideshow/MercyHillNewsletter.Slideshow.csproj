@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3ED4593B-189B-4442-A51E-ABFA81983248}</ProjectGuid>
+    <ProjectGuid>{D5B7FBAB-C5FD-440F-8DBE-F4EB3DE8B8C2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MercyHillNewsletter.UserInterface</RootNamespace>
-    <AssemblyName>MercyHillNewsletter.UserInterface</AssemblyName>
+    <RootNamespace>MercyHillNewsletter.Slideshow</RootNamespace>
+    <AssemblyName>MercyHillNewsletter.Slideshow</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,13 +30,12 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <RegisterForComInterop>true</RegisterForComInterop>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,41 +43,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\ConfigurationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ConfigurationForm.Designer.cs">
-      <DependentUpon>ConfigurationForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="PowerpointExporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\ConfigurationForm.resx">
-      <DependentUpon>ConfigurationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MercyHillNewsletter.Logging\MercyHillNewsletter.Logging.csproj">
-      <Project>{6CB6B077-9BEB-4031-BAC0-64B169FC244A}</Project>
-      <Name>MercyHillNewsletter.Logging</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MercyHillNewsletter.Parsing\MercyHillNewsletter.Parsing.csproj">
-      <Project>{E62588E3-9E84-4AA5-AF69-255F7AB614C7}</Project>
-      <Name>MercyHillNewsletter.Parsing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MercyHillNewsletter.Slideshow\MercyHillNewsletter.Slideshow.csproj">
-      <Project>{D5B7FBAB-C5FD-440F-8DBE-F4EB3DE8B8C2}</Project>
-      <Name>MercyHillNewsletter.Slideshow</Name>
-    </ProjectReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.PowerPoint">
+      <Guid>{91493440-5A91-11CF-8700-00AA0060263B}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>10</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

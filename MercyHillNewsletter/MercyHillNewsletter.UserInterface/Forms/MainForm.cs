@@ -36,7 +36,7 @@ namespace MercyHillNewsletter.UserInterface
             _logger = new TextBoxLogger(txtLog);
             _parser = new NewsletterParser(_logger);
 
-            statusLabel.Text = "Click Images > Create slideshow to begin.";
+            statusLabel.Text = "Click Newsletter > Slice Elements to begin.";
         }
 
         private void imageHandlingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -59,11 +59,13 @@ namespace MercyHillNewsletter.UserInterface
             Application.Exit();
         }
 
-        private void createSlideshowToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sliceElementsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             refreshAppSettings();
 
             runBrowserThread(new Uri(AppSettings["NewsletterUrl"]));
+
+            statusLabel.Text = "Click Export > To PowerPoint to continue.";
         }
 
         private void refreshAppSettings()

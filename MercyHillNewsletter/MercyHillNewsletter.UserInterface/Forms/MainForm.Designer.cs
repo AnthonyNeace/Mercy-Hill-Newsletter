@@ -35,11 +35,11 @@
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.imageHandlingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createSlideshowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toPowerPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.TextBox();
-            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toPowerPointToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -91,16 +91,31 @@
             this.imageHandlingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.createSlideshowToolStripMenuItem});
             this.imageHandlingToolStripMenuItem.Name = "imageHandlingToolStripMenuItem";
-            this.imageHandlingToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.imageHandlingToolStripMenuItem.Text = "Image";
+            this.imageHandlingToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.imageHandlingToolStripMenuItem.Text = "Newsletter";
             this.imageHandlingToolStripMenuItem.Click += new System.EventHandler(this.imageHandlingToolStripMenuItem_Click);
             // 
             // createSlideshowToolStripMenuItem
             // 
             this.createSlideshowToolStripMenuItem.Name = "createSlideshowToolStripMenuItem";
-            this.createSlideshowToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.createSlideshowToolStripMenuItem.Text = "Create slideshow";
-            this.createSlideshowToolStripMenuItem.Click += new System.EventHandler(this.createSlideshowToolStripMenuItem_Click);
+            this.createSlideshowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.createSlideshowToolStripMenuItem.Text = "Slice Elements";
+            this.createSlideshowToolStripMenuItem.Click += new System.EventHandler(this.sliceElementsToolStripMenuItem_Click);
+            // 
+            // exportToolStripMenuItem
+            // 
+            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toPowerPointToolStripMenuItem});
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.exportToolStripMenuItem.Text = "Export";
+            // 
+            // toPowerPointToolStripMenuItem
+            // 
+            this.toPowerPointToolStripMenuItem.Name = "toPowerPointToolStripMenuItem";
+            this.toPowerPointToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.toPowerPointToolStripMenuItem.Text = "To PowerPoint";
+            this.toPowerPointToolStripMenuItem.Click += new System.EventHandler(this.toPowerPointToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -130,21 +145,6 @@
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLog.Size = new System.Drawing.Size(784, 316);
             this.txtLog.TabIndex = 5;
-            // 
-            // exportToolStripMenuItem
-            // 
-            this.exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toPowerPointToolStripMenuItem});
-            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.exportToolStripMenuItem.Text = "Export";
-            // 
-            // toPowerPointToolStripMenuItem
-            // 
-            this.toPowerPointToolStripMenuItem.Name = "toPowerPointToolStripMenuItem";
-            this.toPowerPointToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.toPowerPointToolStripMenuItem.Text = "To PowerPoint";
-            this.toPowerPointToolStripMenuItem.Click += new System.EventHandler(this.toPowerPointToolStripMenuItem_Click);
             // 
             // MainForm
             // 

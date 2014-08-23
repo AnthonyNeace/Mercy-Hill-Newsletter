@@ -40,26 +40,15 @@ namespace MercyHillNewsletter.Slideshow
             GC.WaitForPendingFinalizers();
 
             // TODO: Investigate occasion problems with PPT not closing.
-            app.Quit();
-
-        }
-
-        #region #Private Helper Methods
-
-        private void killPowerPoint(Application app, Presentation pre)
-        {
-            pre = null;
-
-            GC.Collect();
-            GC.WaitForPendingFinalizers();
-
-            // TODO: Investigate occasion problems with PPT not closing.
+            // Things seem to be okay so long as I release pre and quit the application here.
             app.Quit();
 
             // It's dead, Jim.
             // TODO: This should be configurable... this will kill all running instances of PPT.
             //killProcess();
         }
+
+        #region #Private Helper Methods
 
         private Application openPowerPoint()
         {
@@ -89,26 +78,21 @@ namespace MercyHillNewsletter.Slideshow
                 pptLayout = pptPreso.SlideMaster.CustomLayouts._Index(7);
             }
 
-            float sldHeight = pptPreso.PageSetup.SlideHeight;
-            float sldWidth = pptPreso.PageSetup.SlideWidth;
-
             // Create newSlide by using pptLayout.
             Slide newSlide =
                 pptPreso.Slides.AddSlide((pptPreso.Slides.Count + 1), pptLayout);
 
             Image img = Image.FromFile(image);
 
+            // Prepare to center the image.
+            float sldHeight = pptPreso.PageSetup.SlideHeight;
+            float sldWidth = pptPreso.PageSetup.SlideWidth;
+
             var left = sldWidth * .5f - (float)img.Width * .5f;
             var top = sldHeight * .5f - (float)img.Height * .5f;
 
-            var picture = newSlide.Shapes.AddPicture(image, MsoTriState.msoTrue, MsoTriState.msoTrue, left, top, (float)img.Width, (float)img.Height);
-
-            //float shpHeight = picture.Height;
-            //float shpWidth = picture.Width;
-
-            //// Reset image location 
-            //picture.Left = sldWidth * .5f - shpWidth * .5f;
-            //picture.Top = sldHeight * .5f - shpHeight * .5f;
+            // Finally, add the picture... centered in the frame.
+            newSlide.Shapes.AddPicture(image, MsoTriState.msoTrue, MsoTriState.msoTrue, left, top, (float)img.Width, (float)img.Height);
 
             return newSlide;
         }

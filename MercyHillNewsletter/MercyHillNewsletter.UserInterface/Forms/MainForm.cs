@@ -14,6 +14,7 @@ using MercyHillNewsletter.Logging.Logger;
 using MercyHillNewsletter.Parsing;
 using System.Threading;
 using MercyHillNewsletter.Slideshow;
+using MercyHillNewsletter.Parsing.RSS;
 
 namespace MercyHillNewsletter.UserInterface
 {
@@ -30,16 +31,13 @@ namespace MercyHillNewsletter.UserInterface
         {
             InitializeComponent();
 
-            _lw = new BackgroundWorker();
-            _lw.DoWork += new DoWorkEventHandler(lw_DoWork); 
-
             _logger = new TextBoxLogger(txtLog);
             _parser = new NewsletterParser(_logger);
 
             statusLabel.Text = "Click Newsletter > Slice Elements to begin.";
         }
 
-        private void imageHandlingToolStripMenuItem_Click(object sender, EventArgs e)
+        private void newsletterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -68,23 +66,20 @@ namespace MercyHillNewsletter.UserInterface
             statusLabel.Text = "Click Export > To PowerPoint to continue.";
         }
 
+        public void writeToLog(string log)
+        {
+            BackgroundWorker logWorker = new BackgroundWorker();
+            logWorker.DoWork += new DoWorkEventHandler(lw_DoWork);
+
+            logWorker.RunWorkerAsync(log);
+        }
+
         private void refreshAppSettings()
         {
             AppSettings = ConfigurationManager.AppSettings;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            writeToLog(@"Mercy Hill Newsletter Parser
-Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-Newsletter");
-        }
-
-        public void writeToLog(string log)
-        {
-            _lw.RunWorkerAsync(log);
-        }
-
-        #region Threads
+        #region Newsletter Parsing
 
         private void runBrowserThread(Uri url)
         {
@@ -110,6 +105,30 @@ Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-N
             Application.ExitThread();
         }
 
+        private void getNewestToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            refreshAppSettings();
+
+            FeedReader feedReader = new FeedReader(AppSettings["NewsletterFeed"]);
+
+            Newsletter newsletter = feedReader.GetNewest();
+
+            writeToLog(newsletter.Title);
+            writeToLog(newsletter.Url);
+            writeToLog(newsletter.PublishDate.ToString());
+            writeToLog(newsletter.Text);
+        }
+
+        #endregion
+
+        #region Logging
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            writeToLog(@"Mercy Hill Newsletter Parser
+Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-Newsletter");
+        }
+
         private void lw_DoWork(object sender, DoWorkEventArgs e)
         {
             string message = e.Argument as string;
@@ -118,6 +137,8 @@ Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-N
         }
 
         #endregion
+
+        #region Export Images
 
         private void toPowerPointToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -136,5 +157,8 @@ Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-N
                 test.ExportToPowerpoint(images);
             }
         }
+
+        #endregion
+
     }
 }

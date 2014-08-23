@@ -23,6 +23,7 @@ namespace MercyHillNewsletter.UserInterface
         {
             NameValueCollection appSettings = ConfigurationManager.AppSettings;
 
+            txtNewsletterFeed.Text = appSettings["NewsletterFeed"];
             txtNewsletterUrl.Text = appSettings["NewsletterUrl"];
             txtWriteDirectory.Text = appSettings["WriteDirectory"];
         }
@@ -31,6 +32,7 @@ namespace MercyHillNewsletter.UserInterface
         {
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
+            config.AppSettings.Settings["NewsletterFeed"].Value = txtNewsletterFeed.Text;
             config.AppSettings.Settings["NewsletterUrl"].Value = txtNewsletterUrl.Text;
             config.AppSettings.Settings["WriteDirectory"].Value = txtWriteDirectory.Text;
 

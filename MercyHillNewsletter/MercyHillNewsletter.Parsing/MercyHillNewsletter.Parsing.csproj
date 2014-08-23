@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Newsletter.cs" />
     <Compile Include="NewsletterParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSS\FeedReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MercyHillNewsletter.Logging\MercyHillNewsletter.Logging.csproj">

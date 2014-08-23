@@ -40,6 +40,8 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.txtLog = new System.Windows.Forms.TextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.getNewestToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -89,11 +91,13 @@
             // imageHandlingToolStripMenuItem
             // 
             this.imageHandlingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.createSlideshowToolStripMenuItem});
+            this.createSlideshowToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.getNewestToolStripMenuItem});
             this.imageHandlingToolStripMenuItem.Name = "imageHandlingToolStripMenuItem";
             this.imageHandlingToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.imageHandlingToolStripMenuItem.Text = "Newsletter";
-            this.imageHandlingToolStripMenuItem.Click += new System.EventHandler(this.imageHandlingToolStripMenuItem_Click);
+            this.imageHandlingToolStripMenuItem.Click += new System.EventHandler(this.newsletterToolStripMenuItem_Click);
             // 
             // createSlideshowToolStripMenuItem
             // 
@@ -137,14 +141,26 @@
             // 
             this.txtLog.BackColor = System.Drawing.SystemColors.Info;
             this.txtLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtLog.Enabled = false;
             this.txtLog.ForeColor = System.Drawing.SystemColors.MenuText;
             this.txtLog.Location = new System.Drawing.Point(0, 24);
             this.txtLog.Multiline = true;
             this.txtLog.Name = "txtLog";
+            this.txtLog.ReadOnly = true;
             this.txtLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtLog.Size = new System.Drawing.Size(784, 316);
             this.txtLog.TabIndex = 5;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // getNewestToolStripMenuItem
+            // 
+            this.getNewestToolStripMenuItem.Name = "getNewestToolStripMenuItem";
+            this.getNewestToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.getNewestToolStripMenuItem.Text = "Get Newest";
+            this.getNewestToolStripMenuItem.Click += new System.EventHandler(this.getNewestToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -181,6 +197,8 @@
         private System.Windows.Forms.TextBox txtLog;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toPowerPointToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem getNewestToolStripMenuItem;
 
     }
 }

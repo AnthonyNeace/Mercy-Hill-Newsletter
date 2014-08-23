@@ -27,7 +27,7 @@ namespace MercyHillNewsletter.Logging.Logger
                     if (line != null)
                     {
                         // Use Invoke to update _txtLog on the UI thread.
-                        _txtLog.Invoke((MethodInvoker)(() => _txtLog.Text += string.Format("{0}{1}{2}", DateTime.UtcNow.ToString("yyyyMMdd-HHmm: "), line, Environment.NewLine)));
+                        _txtLog.Invoke((MethodInvoker)(() => _txtLog.AppendText(string.Format("{0}{1}{2}", DateTime.UtcNow.ToString("yyyyMMdd-HHmm: "), line, Environment.NewLine))));
                     }
 
                 } while (line != null);

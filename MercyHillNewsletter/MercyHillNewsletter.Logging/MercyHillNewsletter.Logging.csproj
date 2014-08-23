@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Logger\TextBoxLogger.cs" />
+    <Compile Include="LogWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

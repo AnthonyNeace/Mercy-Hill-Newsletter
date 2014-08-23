@@ -15,24 +15,25 @@ using MercyHillNewsletter.Parsing;
 using System.Threading;
 using MercyHillNewsletter.Slideshow;
 using MercyHillNewsletter.Parsing.RSS;
+using MercyHillNewsletter.Logging;
 
 namespace MercyHillNewsletter.UserInterface
 {
     public partial class MainForm : Form
     {
         private NameValueCollection AppSettings { get; set; }
-        private static TextBoxLogger _logger { get; set; }
         private NewsletterParser _parser { get; set; }
 
-        // threads
-        private BackgroundWorker _lw { get; set; }
+        private static TextBoxLogger _logger { get; set; }
+        private static LogWriter _logWriter { get; set; }
 
         public MainForm()
         {
             InitializeComponent();
 
             _logger = new TextBoxLogger(txtLog);
-            _parser = new NewsletterParser(_logger);
+            _logWriter = new LogWriter(_logger);
+            _parser = new NewsletterParser(_logWriter);
 
             statusLabel.Text = "Click Newsletter > Slice Elements to begin.";
         }
@@ -68,10 +69,7 @@ namespace MercyHillNewsletter.UserInterface
 
         public void writeToLog(string log)
         {
-            BackgroundWorker logWorker = new BackgroundWorker();
-            logWorker.DoWork += new DoWorkEventHandler(lw_DoWork);
-
-            logWorker.RunWorkerAsync(log);
+            _logWriter.WriteMessage(log);
         }
 
         private void refreshAppSettings()
@@ -127,13 +125,6 @@ namespace MercyHillNewsletter.UserInterface
         {
             writeToLog(@"Mercy Hill Newsletter Parser
 Track latest updates and changes at https://github.com/AnthonyNeace/Mercy-Hill-Newsletter");
-        }
-
-        private void lw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            string message = e.Argument as string;
-
-            _logger.WriteMessage(message);
         }
 
         #endregion

@@ -6,17 +6,18 @@ using System.Windows.Forms;
 using System.Data;
 using System.Drawing;
 using MercyHillNewsletter.Logging.Logger;
+using MercyHillNewsletter.Logging;
 
 namespace MercyHillNewsletter.Parsing
 {
     public class NewsletterParser
     {
         protected WebBrowser wb {get; set;}
-        private ILogger _logger;
+        private LogWriter _logWriter;
 
-        public NewsletterParser(ILogger logger)
+        public NewsletterParser(LogWriter logWriter)
         {
-            _logger = logger;
+            _logWriter = logWriter;
         }
 
         public void TakeScreenshotsOfHtmlElements(WebBrowser br)
@@ -92,7 +93,7 @@ namespace MercyHillNewsletter.Parsing
 
         private void writeToLog(string log)
         {
-            _logger.WriteMessage(log);
+            _logWriter.WriteMessage(log);
         }
 
         #endregion

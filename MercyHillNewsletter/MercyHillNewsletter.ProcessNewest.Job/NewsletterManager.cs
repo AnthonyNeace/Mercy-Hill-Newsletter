@@ -23,13 +23,15 @@ namespace MercyHillNewsletter.ProcessNewest.Job
         {
             AppSettings = ConfigurationManager.AppSettings;
 
-            string directory = AppSettings["WriteDirectory"];
+            string logDirectory = AppSettings["WriteDirectory"];
+            string imageDirectory = string.Format(@"{0}{1}\", AppSettings["ImageDirectory"], DateTime.UtcNow.ToString("yyyyMMdd"));
 
-            System.IO.Directory.CreateDirectory(directory);
+            System.IO.Directory.CreateDirectory(logDirectory);
+            System.IO.Directory.CreateDirectory(imageDirectory);
 
             _logger = new FileLogger(AppSettings["WriteDirectory"]);
             _logWriter = new LogWriter(_logger);
-            _parser = new NewsletterParser(_logWriter);            
+            _parser = new NewsletterParser(_logWriter, imageDirectory);            
         }
 
         private void refreshAppSettings()

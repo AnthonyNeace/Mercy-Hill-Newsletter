@@ -31,9 +31,15 @@ namespace MercyHillNewsletter.UserInterface
         {
             InitializeComponent();
 
+            refreshAppSettings();
+
+            string imageDirectory = string.Format(@"{0}{1}\", AppSettings["ImageDirectory"], DateTime.UtcNow.ToString("yyyyMMdd"));
+
+            System.IO.Directory.CreateDirectory(imageDirectory);
+
             _logger = new TextBoxLogger(txtLog);
             _logWriter = new LogWriter(_logger);
-            _parser = new NewsletterParser(_logWriter);
+            _parser = new NewsletterParser(_logWriter, imageDirectory);
 
             statusLabel.Text = "Click Newsletter > Slice Elements to begin.";
         }

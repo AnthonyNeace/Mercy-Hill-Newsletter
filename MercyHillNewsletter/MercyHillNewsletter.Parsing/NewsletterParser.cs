@@ -120,7 +120,7 @@ namespace MercyHillNewsletter.Parsing
 
         private string getDefaultFileName(int counter)
         {
-            return string.Format(@"{0}\newsletter-{1}-{2}.bmp", _imageDirectory, DateTime.Now.ToString("yyyyMMdd-mmHH"), counter);
+            return string.Format(@"{0}\newsletter-{1}-{2}.bmp", _imageDirectory, DateTime.Now.ToString("yyyyMMdd-HHmm"), counter);
         }
 
         private void writeToLog(string log)

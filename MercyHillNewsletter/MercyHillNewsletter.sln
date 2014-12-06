@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercyHillNewsletter", "MercyHillNewsletter\MercyHillNewsletter.csproj", "{3397851C-43F9-4D30-8521-6A630A82D5C8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercyHillNewsletter.UserInterface.Host", "MercyHillNewsletter\MercyHillNewsletter.UserInterface.Host.csproj", "{3397851C-43F9-4D30-8521-6A630A82D5C8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercyHillNewsletter.UserInterface", "MercyHillNewsletter.UserInterface\MercyHillNewsletter.UserInterface.csproj", "{3ED4593B-189B-4442-A51E-ABFA81983248}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercyHillNewsletter.Logging", "MercyHillNewsletter.Logging\MercyHillNewsletter.Logging.csproj", "{6CB6B077-9BEB-4031-BAC0-64B169FC244A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercyHillNewsletter.Slideshow", "MercyHillNewsletter.Slideshow\MercyHillNewsletter.Slideshow.csproj", "{D5B7FBAB-C5FD-440F-8DBE-F4EB3DE8B8C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercyHillNewsletter.ProcessNewsletter.Job", "MercyHillNewsletter.ProcessNewest.Job\MercyHillNewsletter.ProcessNewsletter.Job.csproj", "{8D3381D6-DC0B-4300-8A96-13FF89B27C66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,16 @@ Global
 		{D5B7FBAB-C5FD-440F-8DBE-F4EB3DE8B8C2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{D5B7FBAB-C5FD-440F-8DBE-F4EB3DE8B8C2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{D5B7FBAB-C5FD-440F-8DBE-F4EB3DE8B8C2}.Release|x86.ActiveCfg = Release|Any CPU
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Debug|x86.ActiveCfg = Debug|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Debug|x86.Build.0 = Debug|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Release|Any CPU.ActiveCfg = Release|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Release|Mixed Platforms.Build.0 = Release|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Release|x86.ActiveCfg = Release|x86
+		{8D3381D6-DC0B-4300-8A96-13FF89B27C66}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -7,6 +7,7 @@ using System.Data;
 using System.Drawing;
 using MercyHillNewsletter.Logging.Logger;
 using MercyHillNewsletter.Logging;
+using System.Threading;
 
 namespace MercyHillNewsletter.Parsing
 {
@@ -18,6 +19,11 @@ namespace MercyHillNewsletter.Parsing
         public NewsletterParser(LogWriter logWriter)
         {
             _logWriter = logWriter;
+        }
+
+        public void TakeScreenshotsOfHtmlElements(Uri url)
+        {
+            runBrowserThread(url);
         }
 
         public void TakeScreenshotsOfHtmlElements(WebBrowser br)
@@ -39,6 +45,30 @@ namespace MercyHillNewsletter.Parsing
 
         #region Private Helper Methods
 
+        private void runBrowserThread(Uri url)
+        {
+            // Courtesy of http://stackoverflow.com/questions/4269800/webbrowser-control-in-a-new-thread
+            // You must create a STA thread to use a WebBrowser (or similar ActiveX component). 
+            var th = new Thread(() =>
+            {
+                var br = new WebBrowser();
+                br.DocumentCompleted += browser_DocumentCompleted;
+                br.Navigate(url);
+                Application.Run();
+            });
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
+
+        void browser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            var br = sender as WebBrowser;
+
+            TakeScreenshotsOfHtmlElements(br);
+
+            Application.ExitThread();
+        }
+
         private void initializeWebBrowser()
         {
             wb.Height = 600;
@@ -56,7 +86,7 @@ namespace MercyHillNewsletter.Parsing
             {
                 string nameAttribute = element.GetAttribute("className");
 
-                if (!string.IsNullOrEmpty(nameAttribute) && nameAttribute == "mcnCaptionBlock")
+                if (!string.IsNullOrEmpty(nameAttribute) && nameAttribute == "mcnCaptionBlockInner"/*"mcnCaptionBlock"*/)
                 {
                     writeToLog(string.Format(@"Analyzing the {0} iterate of element {1}", counter, nameAttribute));
 

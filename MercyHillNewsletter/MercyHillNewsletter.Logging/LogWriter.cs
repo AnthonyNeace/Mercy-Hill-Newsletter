@@ -34,6 +34,11 @@ namespace MercyHillNewsletter.Logging
             logWorker.RunWorkerAsync(message);
         }
 
+        public void WriteMessageSynchronously(string message)
+        {
+            Logger.WriteMessage(message);
+        }
+
         private void lw_WriteMessage(object sender, DoWorkEventArgs e)
         {
             string message = e.Argument as string;

@@ -68,6 +68,8 @@ namespace MercyHillNewsletter.ProcessNewest.Job
 
         public void SliceElements()
         {
+            refreshAppSettings();
+
             _parser.TakeScreenshotsOfHtmlElements(new Uri(AppSettings["NewsletterUrl"]));
         }
 
